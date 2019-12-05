@@ -3,7 +3,7 @@ import React from 'react'
 const ListItems = ({
   items,
   deleteItem,
-  total
+  total,
 }) => (
   <div>
     {items.map((item, i) =>
@@ -12,7 +12,7 @@ const ListItems = ({
       </li>)
     )}
 
-      <h1><span>Total power rating:</span> {total}</h1>
+      <h1><span>Total power rating:</span> {total} {total <= 1 ? 'Watt' : 'Watts'}</h1>
   </div>
 )
 

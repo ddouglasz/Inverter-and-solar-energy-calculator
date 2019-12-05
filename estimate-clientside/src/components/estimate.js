@@ -14,11 +14,11 @@ import ListItems from './listItems'
 const EstimateComponent = () => {
 	const initialValue = []
 	
-	const { items, addItem, deleteItem, updateChange } = useItemsStates(initialValue)
+	const { items, addItem, deleteItem, updateChange, total, y } = useItemsStates(initialValue)
 	return (
 		<div>
 			<SaveItemForm saveItem={(item) => addItem(item)} />
-			<ListItems items={items} deleteItem={deleteItem} onChange={updateChange}/>
+			<ListItems items={items} total={total} deleteItem={deleteItem} onChange={updateChange}/>
 		</div>
 	)
  }
