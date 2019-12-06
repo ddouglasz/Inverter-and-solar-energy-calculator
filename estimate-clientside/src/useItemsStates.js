@@ -1,35 +1,50 @@
 import { useState } from "react";
 
 export default initialValue => {
-  const [items, setItems] = useState(initialValue);
-  const [total, setTotal] = useState(0);
-  
-  const updateTotal = (newItems) => {
-    let powerValuesArray = [];
-    let totalPower = 0
-    newItems.forEach(newItem => {
-      powerValuesArray.push(newItem.power_value);
-      totalPower += parseFloat(newItem.power_value).toFixed(2)
-    });
-    // console.log(totalPower)
-    return setTotal(totalPower)
-  }
+	const [items, setItems] = useState(initialValue);
+	const [total, setTotal] = useState(0);
+	const [powerUnit, setPowerUnit] = useState("VA");
+
+	const updateTotal = newItems => {
+		let powerValuesArray = [];
+		let totalPower = 0;
+		newItems.forEach(newItem => {
+			powerValuesArray.push(newItem.power_value);
+			totalPower += parseFloat(newItem.power_value);
+		});
+		return setTotal(parseFloat(totalPower).toFixed(3));
+	};
 
 	return {
-    items,
-    
-    total,
+		items,
+
+		total,
+
+		powerUnit,
 
 		addItem: item => {
-      const newItems = [...items, item];
-      updateTotal(newItems)
-      setItems(newItems)
+			const newItems = [...items, item];
+			updateTotal(newItems);
+			setItems(newItems);
 		},
-    
+
 		deleteItem: itemIndex => {
-      const newItems = items.filter((_, index) => index !== itemIndex);
-      updateTotal(newItems)
-      setItems(newItems)
+			const newItems = items.filter((_, index) => index !== itemIndex);
+			updateTotal(newItems);
+			setItems(newItems);
+		},
+
+		convertPowerUnit: event => {
+			event.preventDefault();
+			const unit = event.target.value;
+			setPowerUnit(unit);
+			if (unit === "KVA") {
+				const newItem = total / 1000;
+				setTotal(newItem);
+			} else if (unit === "VA") {
+				const newItem = total * 1000;
+				setTotal(newItem);
+			}
 		},
 	};
 };

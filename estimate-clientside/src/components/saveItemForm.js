@@ -7,7 +7,7 @@ import Button from './buttons'
 
 const SaveItemForm = ({saveItem, updateChange}) => {
 	
-	const [powerEstimate, setPowerEstimate] = useState('');
+	// const [powerEstimate, setPowerEstimate] = useState('');
 	const [power_item, setPowerItem] = useState('');
 	const [power_value, setPowerValue] = useState(0);
 	const [value, setValue] = useState('0');
@@ -22,11 +22,6 @@ const SaveItemForm = ({saveItem, updateChange}) => {
     event.preventDefault()
 	  setPowerValue(event.target.value)
 	}
-	
-  function getEstimate(event) {
-    event.preventDefault()
-    saveItem(powerEstimate)
-  }
 
 	return (
 		<div>
@@ -56,7 +51,6 @@ const SaveItemForm = ({saveItem, updateChange}) => {
 					type='submit'
 					onclick={(item) => {
 						item = {power_item, power_value}
-						// console.log('item', item)
 						saveItem(item)
 					}}
 				/>
