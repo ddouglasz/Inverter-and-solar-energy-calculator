@@ -5,7 +5,8 @@ const ListItems = ({
 	deleteItem,
 	total,
   powerUnit,
-  convertPowerUnit,
+	convertPowerUnit,
+	totalWithPf
 }) => (
 	<div>
 		{items.map((item, i) => (
@@ -25,6 +26,9 @@ const ListItems = ({
           <option value='KVA'>KVA</option>
 				</select>
 			</span>
+			<div>
+		  <span> pf rating: {totalWithPf} {" "}KW</span>
+			</div>
 		</h1>
 	</div>
 );

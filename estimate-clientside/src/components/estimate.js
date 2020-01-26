@@ -18,8 +18,7 @@ const EstimateComponent = () => {
 		updateChange,
 		total,
 		powerUnit,
-		convertToKva,
-		convertToKv,
+		totalWithPf,
 		convertPowerUnit
 	} = useItemsStates(initialValue);
 	return (
@@ -28,6 +27,7 @@ const EstimateComponent = () => {
 			<ListItems
 				items={items}
 				total={total}
+				totalWithPf={totalWithPf}
 				deleteItem={deleteItem}
 				onChange={updateChange}
 				powerUnit={powerUnit}
