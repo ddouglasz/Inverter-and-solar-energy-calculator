@@ -9,16 +9,24 @@ import { LOADS } from "../helpers/loads";
 
 const SaveItemForm = ({ saveItem, updateChange }) => {
   // const [powerEstimate, setPowerEstimate] = useState('');
-  const [power_item, setPowerItem] = useState("");
-  const [power_value, setPowerValue] = useState(0);
+  const [power_item, setPowerItem] = useState("5W Bulb");
+  const [power_value, setPowerValue] = useState(5);
+  const [quantity, setQuantity] = useState(1);
   const [value, setValue] = useState("0");
 
-  function updatePowerItem(event) {
-    var index = event.nativeEvent.target.selectedIndex;
+  function updateQuantity(event) {
+	event.preventDefault();
+	setQuantity(event.target.value);
+}
+
+function updatePowerItem(event) {
+	var index = event.nativeEvent.target.selectedIndex;
     event.preventDefault();
     setPowerItem(event.nativeEvent.target[index].text);
-    setPowerValue(event.target.value);
-  }
+    setPowerValue(event.target.value * quantity);
+}
+console.log('==>>', quantity)
+
 
   return (
     <div>
@@ -31,13 +39,8 @@ const SaveItemForm = ({ saveItem, updateChange }) => {
         }}
       >
         <br />
-        <label htmlFor="loads">Select an Item:</label>
-        <select
-          name="loads"
-          id="loads"
-          onChange={updatePowerItem}
-          value={value}
-        >
+        <label htmlFor="appliance">Select an appliance:</label>
+        <select name="loads" id="loads" onChange={updatePowerItem}>
           {LOADS.map((load) => (
             <option key={load.item} value={load.rating}>
               {load.item}
@@ -45,7 +48,14 @@ const SaveItemForm = ({ saveItem, updateChange }) => {
           ))}
         </select>
         <br />
-
+		
+        <Input
+          placeholder="1"
+          type="number"
+          name="input"
+          value={event => event.target.value}
+          onChange={updateQuantity}
+        />
         <Button
           name="Generate estimate"
           type="submit"

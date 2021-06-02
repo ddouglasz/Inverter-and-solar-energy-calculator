@@ -1,5 +1,5 @@
 // react libraries
-import React from 'react'
+import React from "react";
 
 const Input = ({
   type,
@@ -9,32 +9,32 @@ const Input = ({
   classes,
   onChange,
   isDisabled,
-  textarea = false
+  textarea = false,
 }) => {
   return (
-    <div className='control'>
-      {
-        !textarea
-          ? <input
-            type={type || 'text'}
-            className={classes}
-            defaultValue={value || ''}
-            name={name}
-            placeholder={placeholder}
-            disabled={isDisabled}
-            onChange={onChange}
-            />
-            : <textarea
-            className={classes}
-            value={value}
-            name={name}
-            placeholder={placeholder}
-            disabled={isDisabled}
-            onChange={onChange}
-            />
-      }
+    <div className="control">
+      {!textarea ? (
+        <input
+          type={type || "text"}
+          className={classes}
+          defaultValue={value || ""}
+          name={name}
+          placeholder={placeholder}
+          disabled={isDisabled}
+          onChange={onChange}
+        />
+      ) : (
+        <textarea
+          className={classes}
+          value={value}
+          name={name}
+          placeholder={placeholder}
+          disabled={isDisabled}
+          onChange={onChange}
+        />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;

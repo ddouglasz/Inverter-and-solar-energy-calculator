@@ -45,7 +45,7 @@ export default initialValue => {
 		convertPowerUnit: event => {
 			event.preventDefault();
 			const unit = event.target.value;
-			setPowerUnit(unit);
+			setPowerUnit(unit);  
 			if (unit === "KVA") {
 				const newItem = total / 1000;
 				setTotalWithPf(parseFloat(newItem/0.8).toFixed(3))
