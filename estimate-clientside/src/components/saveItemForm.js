@@ -9,8 +9,8 @@ import { LOADS } from "../helpers/loads";
 
 const SaveItemForm = ({ saveItem, updateChange }) => {
   // const [powerEstimate, setPowerEstimate] = useState('');
-  const [power_item, setPowerItem] = useState("5W Bulb");
-  const [power_value, setPowerValue] = useState(5);
+  const [appliance_name, setPowerItem] = useState("5W Bulb");
+  const [appliance_rating, setPowerValue] = useState(5);
   const [quantity, setQuantity] = useState(1);
   const [value, setValue] = useState("0");
 
@@ -59,7 +59,7 @@ const SaveItemForm = ({ saveItem, updateChange }) => {
           name="Generate estimate"
           type="submit"
           onclick={(item) => {
-            item = { power_item, power_value, quantity };
+            item = { appliance_name, appliance_rating, quantity };
             saveItem(item);
           }}
         />

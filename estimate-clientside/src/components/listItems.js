@@ -1,12 +1,27 @@
 import React from "react";
 import Button from "./buttons";
 
-
-//Check for items that are listed more than once and add their quantities then remove duplicates.
-const mergeDuplicateItems = (items) => {
-	console.log('---->>>', items)
-	return []
-}
+//TODO: Function is a bit buggy, so left for now.
+// Check for items that are listed more than once and add their quantities then remove duplicates.
+// const mergeDuplicateItems = (items) => {
+//   let applianceName = [];
+//   let mergedItems = [];
+//   items.forEach((element) => {
+//     if (!applianceName.includes(element["appliance_name"])) {
+//       applianceName.push(element["appliance_name"]);
+//       mergedItems.push(element);
+//     } else {
+//       mergedItems.forEach((mergedItem) => {
+//         if (mergedItem["appliance_name"] === element["appliance_name"]) {
+//           mergedItem["appliance_rating"] = parseInt(mergedItem["appliance_rating"]) + parseInt(
+//             element["appliance_rating"]
+//           );
+//         }
+//       });
+//     }
+//   });
+//   return mergedItems;
+// };
 
 const ListItems = ({
   items,
@@ -18,12 +33,16 @@ const ListItems = ({
   totalWithPf,
 }) => (
   <div>
-	
-	{mergeDuplicateItems(items)}
+    {/* {console.log(mergeDuplicateItems(items))} */}
     {items.map((item, i) => (
       <li key={i}>
-        {item.power_item}: {item.power_value} X {item.quantity} Watts
-        <Button type="button" name="x" className="" onclick={() => deleteItem(i)} />
+        {item.appliance_name}: {item.appliance_rating} X {item.quantity} Watts
+        <Button
+          type="button"
+          name="x"
+          className=""
+          onclick={() => deleteItem(i)}
+        />
       </li>
     ))}
 
@@ -39,12 +58,7 @@ const ListItems = ({
         <span> pf rating: {totalWithPf} KW</span>
       </div>
     </h1>
-
-	<Button
-          name="Reset"
-          type="button"
-          onclick={() => reset()}
-        />
+    <Button name="Reset" type="button" onclick={() => reset()} />
   </div>
 );
 

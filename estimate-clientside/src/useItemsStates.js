@@ -11,8 +11,8 @@ export default (initialValue) => {
     let totalPower = 0;
 
     newItems.forEach((newItem) => {
-      //   powerValuesArray.push(newItem.power_value);
-      totalPower += parseFloat(newItem.power_value * newItem.quantity);
+      //   powerValuesArray.push(newItem.appliance_rating);
+      totalPower += parseFloat(newItem.appliance_rating * newItem.quantity);
     });
     if (powerUnit === "KVA") {
       return setTotal(parseFloat(totalPower / 1000).toFixed(3));
