@@ -1,23 +1,17 @@
 // react libraries
-import React from 'react'
+import React from "react";
 
-const Button = ({
-  classes,
-  disabled,
-  submit = false,
-  name,
-  onclick,
-}) => {
+const Button = ({ classes, disabled, submit = false, name, onclick }) => {
   return (
     <button
       className={classes}
-      type={submit ? 'submit' : 'button'}
+      type={submit ? "submit" : "button"}
       disabled={disabled}
       onClick={onclick}
     >
       {name}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;
