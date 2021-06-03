@@ -26,7 +26,6 @@ const SaveItemForm = ({ saveItem, updateChange }) => {
     setPowerValue(event.target.value);
   }
 
-//   console.log("==>>", quantity);
 
   return (
     <div>
