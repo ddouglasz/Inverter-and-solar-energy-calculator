@@ -14,7 +14,8 @@ const EstimateComponent = () => {
   const {
     items,
     addItem,
-    deleteItem,
+	deleteItem,
+	reset,
     updateChange,
     total,
     powerUnit,
@@ -28,7 +29,8 @@ const EstimateComponent = () => {
         items={items}
         total={total}
         totalWithPf={totalWithPf}
-        deleteItem={deleteItem}
+		deleteItem={deleteItem}
+		reset={reset}
         onChange={updateChange}
         powerUnit={powerUnit}
         convertPowerUnit={convertPowerUnit}

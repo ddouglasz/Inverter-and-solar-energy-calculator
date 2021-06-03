@@ -1,20 +1,29 @@
 import React from "react";
+import Button from "./buttons";
+
+
+//Check for items that are listed more than once and add their quantities then remove duplicates.
+const mergeDuplicateItems = (items) => {
+	console.log('---->>>', items)
+	return []
+}
 
 const ListItems = ({
   items,
   deleteItem,
+  reset,
   total,
   powerUnit,
   convertPowerUnit,
   totalWithPf,
 }) => (
   <div>
+	
+	{mergeDuplicateItems(items)}
     {items.map((item, i) => (
       <li key={i}>
-        {item.power_item}: {item.power_value} Watts
-        <button className="" onClick={() => deleteItem(i)}>
-          x
-        </button>
+        {item.power_item}: {item.power_value} X {item.quantity} Watts
+        <Button type="button" name="x" className="" onclick={() => deleteItem(i)} />
       </li>
     ))}
 
@@ -30,6 +39,12 @@ const ListItems = ({
         <span> pf rating: {totalWithPf} KW</span>
       </div>
     </h1>
+
+	<Button
+          name="Reset"
+          type="button"
+          onclick={() => reset()}
+        />
   </div>
 );
 
