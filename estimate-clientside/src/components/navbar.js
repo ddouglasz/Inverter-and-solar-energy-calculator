@@ -1,7 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+
+const StyledNavbarCover = styled.div`
+  background-color: #000000;
+  height: 50px;
+  color: #FFFF;
+
+`;
 
 const Navbar = () => {
-  return <h1>Navbar</h1>;
+  return <StyledNavbarCover>Navbar</StyledNavbarCover>;
 };
 
 export default Navbar;

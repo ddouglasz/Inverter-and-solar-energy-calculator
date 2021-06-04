@@ -1,7 +1,7 @@
 // react libraries
 import React from "react";
 
-const Button = ({ classes, disabled, submit = false, name, onclick }) => {
+const Button = ({ classes, disabled, submit = false, onclick, children }) => {
   return (
     <button
       className={classes}
@@ -9,7 +9,7 @@ const Button = ({ classes, disabled, submit = false, name, onclick }) => {
       disabled={disabled}
       onClick={onclick}
     >
-      {name}
+      {children}
     </button>
   );
 };
