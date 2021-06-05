@@ -46,6 +46,15 @@ const StyledSaveItemForm = styled.div`
     opacity: 1;
     right: 0;
   }
+
+  .inputs-cover {
+    display: flex;
+  }
+
+  .quantity-input {
+    width: 40px;
+  }
+
 `;
 
 const SaveItemForm = ({ saveItem, reset }) => {
@@ -73,28 +82,28 @@ const SaveItemForm = ({ saveItem, reset }) => {
         className="input-field"
         onSubmit={(event) => {
           event.preventDefault();
-          // saveItem(value)
           setValue("");
         }}
       >
-        <br />
-        <label htmlFor="appliance">Select an appliance:</label>
-        <select name="loads" id="loads" onChange={updatePowerItem}>
-          {LOADS.map((load, i) => (
-            <option key={i} value={load.rating}>
-              {load.item}
-            </option>
-          ))}
-        </select>
-        <br />
+        <div className="inputs-cover">
+          <label htmlFor="appliance">Select an appliance:</label>
+          <select name="loads" id="loads" onChange={updatePowerItem}>
+            {LOADS.map((load, i) => (
+              <option key={i} value={load.rating}>
+                {load.item}
+              </option>
+            ))}
+          </select>
 
-        <Input
-          placeholder="1"
-          type="number"
-          name="input"
-          value={(event) => event.target.value}
-          onChange={updateQuantity}
-        />
+          <Input
+            placeholder="1"
+            type="number"
+            name="input"
+            classes="quantity-input"
+            value={(event) => event.target.value}
+            onChange={updateQuantity}
+          />
+        </div>
         <Button
           classes="generate-estimate-btn"
           type="submit"

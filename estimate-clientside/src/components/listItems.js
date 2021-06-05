@@ -2,11 +2,35 @@ import React from "react";
 import Button from "./buttons";
 import styled from "styled-components";
 
-const styledItemsList = styled.div`
+const StyledItemsList = styled.div`
   .results-wrapper {
-    font-size: 32px;
-    font-weight: bold;
-    margin-top: 20px;
+    font-weight: 900;
+    font-size: 2rem;
+  }
+
+  .results {
+  }
+
+  .power-unit {
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+
+  .item {
+    margin: 5px;
+    background: grey;
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+  }
+
+  .pf-rating {
+    /* display: flex; */
+    /* justify-content: space-between; */
+  }
+
+  .power-rating {
+
   }
 `;
 
@@ -41,31 +65,32 @@ const ListItems = ({
   convertPowerUnit,
   totalWithPf,
 }) => (
-  <styledItemsList>
+  <StyledItemsList>
     <div className="results-wrapper">
-      <h1>
-        <span>Total power rating:</span> {total} {powerUnit}
+      <div className="results">
+        <span>Total power rating:</span> <span>{total} {powerUnit}</span>
         <span>
-          <select name="unit" onChange={(total) => convertPowerUnit(total)}>
+          <select className="power-unit" name="unit" onChange={(total) => convertPowerUnit(total)}>
             <option value="VA">VA</option>
             <option value="KVA">KVA</option>
           </select>
         </span>
         <div>
-          <span> pf rating: {totalWithPf} KW</span>
+          <span className="pf-rating"> <span>Pf rating:</span> <span>{totalWithPf} KW</span></span>
         </div>
-      </h1>
+      </div>
     </div>
+    <h1>Appliances: </h1>
     {/* {console.log(mergeDuplicateItems(items))} */}
     {items.map((item, i) => (
-      <li key={i}>
+      <li className="item" key={i}>
         {item.appliance_name}: {item.appliance_rating} X {item.quantity} Watts
         <Button type="button" classes="" onclick={() => deleteItem(i)}>
           x
         </Button>
       </li>
     ))}
-  </styledItemsList>
+  </StyledItemsList>
 );
 
 export default ListItems;
