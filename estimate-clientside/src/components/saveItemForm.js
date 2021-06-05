@@ -9,7 +9,36 @@ import { LOADS } from "../helpers/loads";
 
 import styled from "styled-components";
 
-const StyledSaveItemForm = styled.div`
+const StyledSaveItemForm = styled.div`  
+  .inputs-cover {
+    margin-bottom: 10%;
+    font-size: 25px;
+    display: flex;
+
+  }
+
+  .select-cover {
+
+  }
+
+  .appliance-label {
+    margin-right: 4px;
+  }
+
+  .appliance-name {
+  }
+
+  .select-loads {
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+
+  .quantity-input {
+    width: 40px;
+    padding: 0;
+    vertical-align: middle;
+  }
+
   .generate-estimate-btn {
     background-color: #000000;
     border: none;
@@ -20,7 +49,7 @@ const StyledSaveItemForm = styled.div`
     width: 200px;
     transition: all 0.5s;
     cursor: pointer;
-    margin: 5px;
+    margin-top: 5px;
   }
 
   .generate-estimate-btn span {
@@ -47,14 +76,15 @@ const StyledSaveItemForm = styled.div`
     right: 0;
   }
 
-  .inputs-cover {
-    display: flex;
+  .reset-btn {
+    margin-left: 4px;
+    padding: 20px;
+    font-size: 25px;
+    background-color: red;
+    color: #ffff;
+    border: none;
+    cursor: pointer;
   }
-
-  .quantity-input {
-    width: 40px;
-  }
-
 `;
 
 const SaveItemForm = ({ saveItem, reset }) => {
@@ -86,15 +116,23 @@ const SaveItemForm = ({ saveItem, reset }) => {
         }}
       >
         <div className="inputs-cover">
-          <label htmlFor="appliance">Select an appliance:</label>
-          <select name="loads" id="loads" onChange={updatePowerItem}>
-            {LOADS.map((load, i) => (
-              <option key={i} value={load.rating}>
-                {load.item}
-              </option>
-            ))}
-          </select>
-
+          <div className="select-cover">
+            <label className="appliance-label" htmlFor="appliance">
+              Select an appliance:
+            </label>
+            <select
+              className="select-loads"
+              name="loads"
+              id="loads"
+              onChange={updatePowerItem}
+            >
+              {LOADS.map((load, i) => (
+                <option key={i} value={load.rating}>
+                  {load.item}
+                </option>
+              ))}
+            </select>
+          </div>
           <Input
             placeholder="1"
             type="number"
@@ -114,10 +152,10 @@ const SaveItemForm = ({ saveItem, reset }) => {
         >
           <span>Calculate</span>
         </Button>
+        <Button classes="reset-btn" type="button" onclick={() => reset()}>
+          Reset
+        </Button>
       </form>
-      <Button type="button" onclick={() => reset()}>
-        Reset
-      </Button>
     </StyledSaveItemForm>
   );
 };

@@ -18,7 +18,7 @@ const StyledItemsList = styled.div`
 
   .item {
     margin: 5px;
-    background: grey;
+    background: #C0C0C0;
     display: flex;
     justify-content: space-between;
     padding: 2px;
