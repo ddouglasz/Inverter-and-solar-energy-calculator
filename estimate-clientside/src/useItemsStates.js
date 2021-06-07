@@ -28,7 +28,7 @@ export default (initialValue) => {
     totalWithPf,
 
     addItem: (item) => {
-      const newItems = [...items, item];
+      const newItems = [item, ...items];
       updateTotal(newItems);
       setItems(newItems);
     },

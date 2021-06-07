@@ -18,7 +18,7 @@ const StyledItemsList = styled.div`
 
   .item {
     margin: 5px;
-    background: #C0C0C0;
+    background: #c0c0c0;
     display: flex;
     justify-content: space-between;
     padding: 2px;
@@ -30,7 +30,14 @@ const StyledItemsList = styled.div`
   }
 
   .power-rating {
+  }
 
+  @media (max-width: 768px) {
+    .items-cover {
+      height: 40vh;
+      overflow-y: scroll;
+      border: solid 1px grey;
+    }
   }
 `;
 
@@ -68,28 +75,40 @@ const ListItems = ({
   <StyledItemsList>
     <div className="results-wrapper">
       <div className="results">
-        <span>Total power rating:</span> <span>{total} {powerUnit}</span>
+        <span>Total power rating:</span>{" "}
         <span>
-          <select className="power-unit" name="unit" onChange={(total) => convertPowerUnit(total)}>
+          {total} {powerUnit}
+        </span>
+        <span>
+          <select
+            className="power-unit"
+            name="unit"
+            onChange={(total) => convertPowerUnit(total)}
+          >
             <option value="VA">VA</option>
             <option value="KVA">KVA</option>
           </select>
         </span>
         <div>
-          <span className="pf-rating"> <span>Pf rating:</span> <span>{totalWithPf} KW</span></span>
+          <span className="pf-rating">
+            {" "}
+            <span>Pf rating:</span> <span>{totalWithPf} KW</span>
+          </span>
         </div>
       </div>
     </div>
     <h1>Appliances: </h1>
-    {/* {console.log(mergeDuplicateItems(items))} */}
-    {items.map((item, i) => (
-      <li className="item" key={i}>
-        {item.appliance_name}: {item.appliance_rating} X {item.quantity} Watts
-        <Button type="button" classes="" onclick={() => deleteItem(i)}>
-          x
-        </Button>
-      </li>
-    ))}
+    <div className="items-cover">
+      {/* {console.log(mergeDuplicateItems(items))} */}
+      {items.map((item, i) => (
+        <li className="item" key={i}>
+          {item.appliance_name}: {item.appliance_rating} X {item.quantity} Watts
+          <Button type="button" classes="" onclick={() => deleteItem(i)}>
+            x
+          </Button>
+        </li>
+      ))}
+    </div>
   </StyledItemsList>
 );
 

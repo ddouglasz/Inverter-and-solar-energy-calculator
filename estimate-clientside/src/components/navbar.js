@@ -9,7 +9,7 @@ const StyledNavbarCover = styled.div`
 `;
 
 const Navbar = () => {
-  return <StyledNavbarCover>Navbar</StyledNavbarCover>;
+  return <StyledNavbarCover></StyledNavbarCover>;
 };
 
 export default Navbar;

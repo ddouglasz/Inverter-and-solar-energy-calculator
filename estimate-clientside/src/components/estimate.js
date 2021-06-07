@@ -13,6 +13,10 @@ const StyledAppCover = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 30px;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 const EstimateComponent = () => {
